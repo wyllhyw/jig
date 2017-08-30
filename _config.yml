@@ -1,1 +1,22 @@
-theme: jekyll-theme-cayman
+# Name - Provide a simple name for your API / developer portal.
+portal_title: 'teh jigz up'
+portal_name: 'teh jigz up'
+
+# URL - developer.[yourdomain].com
+portal_url: https://kinlane.github.io/teh-jigz-up/
+
+# Description - Provide a concise description of what a platform does.
+portal_description: A project.
+
+# Contact Information
+portal_contact_name: Kin Lane
+portal_contact_email: info@apievangelist.com
+
+github_user: kinlane
+github_repo: teh-jigz-up
+
+permalink: /:categories/:year/:month/:day/:title/
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".DS_Store"]
+
+paginate: 150
+paginate_path: "/updates/page:num"
