@@ -45,13 +45,18 @@ text-align: top;
 
 <script type="text/javascript">
 
-    // The spreadsheet ID
-    key = "1kog5mt-Rubg_JogvAmWgy0z0QnnsbfIFDlMdi3H2rbw";
+    // Begin Edit
+
+    key = "17PQQpUwl_uQzQeFrj4gZtQ1BphuhfFf5OYW2Neob-hs"; // The spreadsheet ID -- Found in URL
+    $sheet = "sheet"; //  The name of the sheet in Google Sheet
+
+    // End Edit
+
 
     $(document).ready( function() {
       Tabletop.init( { key: key,
                        callback: showInfo,
-                       wanted: [ "part the first" ],
+                       wanted: [ $sheet ],
                        debug: true } )
     })
 
@@ -65,11 +70,11 @@ text-align: top;
         $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
       });
 
-      $product = tabletop.sheets("part the first").all();
+      $product = tabletop.sheets($sheet).all();
 
       $count = 1;
       $total_count = $product.length;
-      $.each( tabletop.sheets("part the first").all(), function(i, service) {
+      $.each( tabletop.sheets($sheet).all(), function(i, service) {
 
           //console.log("id:" + i);
           //console.log(service);
