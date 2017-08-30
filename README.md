@@ -1,4 +1,4 @@
 # teh jigz up
-teh jigz up
+teh jigz up template
 
-URL: https://kinlane.github.io/teh-jigz-up/
+URL: https://teh-jigz-up.github.io/template/.
