@@ -12,8 +12,8 @@ portal_description: A project.
 portal_contact_name: Kin Lane
 portal_contact_email: info@apievangelist.com
 
-github_user: kinlane
-github_repo: teh-jigz-up
+github_user: teh-jigz-up
+github_repo: jig
 
 permalink: /:categories/:year/:month/:day/:title/
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".DS_Store"]
