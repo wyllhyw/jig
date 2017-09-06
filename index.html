@@ -1,15 +1,194 @@
 ---
-layout: page
+layout: default
+title: Teh Jigz Up
 ---
 
-<div class="container">
-  <div class="row" style="padding: 50px;">
+<script type="text/javascript">
 
-    <h1>Teh Jigz Up</h1>
-    <p>This is a spreadsheet driven graffik git</p>
-    <ul>
-    <li><a href="sheet/">Sheet</a></li>
-    </ul>
+    $incoming_sheet = getUrlVar('sheet');
 
+    console.log("incoming: " + $incoming_sheet);
+
+    if($incoming_sheet == '')
+      {
+      $use_sheet = '{{ site.first_sheet }}';
+      }
+    else
+      {
+      $use_sheet = $incoming_sheet;
+      }
+
+    $google_sheet = '{{ site.google_sheet }}';
+
+    var $key_array = $google_sheet.split("/");
+
+    key = $key_array[5];
+
+    $(document).ready( function() {
+      Tabletop.init( { key: key,
+                       callback: showInfo,
+                       debug: true } )
+    })
+
+    function showInfo(data, tabletop) {
+
+      $products = new Array();
+
+      $sheets = tabletop.foundSheetNames;
+
+      $.each($sheets, function(s, $sheetname) {
+      $.each(tabletop.sheets(), function(i, sheet) {
+        if(i == $sheetname)
+          {
+          $title = i;
+          $title = titleCase($title);
+          $title = $title.replace("-", " ");
+          $entry_link = '<li><a href="{{ site.baseurl }}/?sheet=' + i + '">' + $title + '</a></li>';
+          $('#story-entries').append($entry_link);
+          }
+          });
+        });
+
+      $previous = 1;
+      $next = 0;
+
+      $sheets = tabletop.foundSheetNames;
+
+      $.each($sheets, function(s, $sheetname) {
+
+      $.each(tabletop.sheets(), function(i, sheet) {
+
+        // Not sure why I have to do this, but sort was not dependable.
+        if(i == $sheetname)
+          {
+
+          if($previous==1)
+            {
+            $previous_sheet = i;
+            if($previous_sheet!=$use_sheet)
+              {
+              $previous_link = '<a href="{{ site.baseurl }}?sheet=' + $previous_sheet + '" class="icon-arrow-left hide-for-small">Previous</a>';
+              $('#jig-previous-top').html($previous_link);
+              $('#jig-previous-bottom').html($previous_link);
+              //console.log($previous_link);
+              }
+            }
+
+            if($next==1)
+              {
+              $next_sheet = i;
+
+              if($next_sheet!=$use_sheet)
+                {
+                $next_link = '<a href="{{ site.baseurl }}?sheet=' + $next_sheet + '" class="hide-for-small">Next<span class="icon-arrow-right"></span></a>';
+                $('#jig-next-top').html($next_link);
+                $('#jig-next-bottom').html($next_link);
+                //console.log($next_link);
+                }
+              $next = 0;
+              }
+
+            if(i == $use_sheet)
+              {
+
+              $title = 'teh jigz up: ' + i;
+              $title = titleCase($title);
+              $title = $title.replace("-", " ");
+              $('#jig-title').html($title);
+
+              // Stop looking for previous
+              $previous = 0;
+
+              // Grab the next sheet as next sheet
+              $next = 1;
+
+              $product = tabletop.sheets($use_sheet).all();
+
+              $count = 1;
+              $total_count = $product.length;
+              $.each( tabletop.sheets($use_sheet).all(), function(i, service) {
+
+                  // Grab the values from the sheet
+                  $title = service['Title'];
+                  $text = service['Text'];
+                  $text_style = service['Text Style'];
+                  $image = service['Image'];
+                  $image_width = service['Image Width'];
+                  $image_style = service['Image Style'];
+                  $background_color = service['Background Color'];
+                  $background_image = service['Background Image'];
+
+                  // Set The Title
+                  $("#strip" + $count).attr("title", $title);
+
+                  // Set the Background Color
+                  $("#strip" + $count).attr("bgcolor", $background_color);
+
+                  // Set the Background Image
+                  if($background_image!='')
+                    {
+                    $("#strip" + $count).css('backgroundImage','url('+$background_image+')');
+                    }
+
+                  // Add Text
+                  $add_text = '<div style="' + $text_style + '">' + $text + '</div>';
+                  $("#strip" + $count).append($add_text);
+
+                  // Add Image
+                  if($image!='')
+                    {
+                    $add_image = '<img src=' + $image + ' width="' + $image_width + '" style="' + $image_style + '" />';
+                    $("#strip" + $count).append($add_image);
+                    }
+
+                  $count++;
+
+                });
+
+              }
+
+            }
+
+          });
+
+      });
+
+    }
+
+</script>
+
+<div style="width: 81%;">
+  <div style="border: 1px solid #000; width: 100%; padding: 0px;">
+    <article class="columns small-14 large-offset-1 large-10 comic-page" style="width: 100%; padding: 0px;">
+      <nav class="comic-nav">
+      	<nav class="previous-comic" id="jig-previous-top"></nav>
+      	<nav class="first-comic" id="jig-title" style="color: #FFF;"></nav>
+        <nav class="comic-next" id="jig-next-top"></nav>
+      </nav>
+
+      <div style="width: 100%;">
+        <table class="strip">
+          <tr>
+            <td id="strip1" title=""></td>
+            <td id="strip2" title=""></td>
+            <td id="strip3" title=""></td>
+          </tr>
+          <tr>
+            <td id="strip4" title=""></td>
+            <td id="strip5" title=""></td>
+            <td id="strip6" title=""></td>
+          </tr>
+        </table>
+      </div>
+
+      <nav class="comic-nav">
+        <nav class="previous-comic" id="jig-previous-bottom"></nav>
+        <nav class="first-comic">
+          <a href="#" class="hide-for-small">All<span class="icon-arrow-down"></span></a>
+        </nav>
+        <nav class="comic-next" id="jig-next-bottom"></nav>
+      </nav>
+
+    </article>
   </div>
 </div>

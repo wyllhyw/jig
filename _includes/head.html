@@ -1,27 +1,18 @@
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="/favicon.ico">
+  <meta name=viewport content="width=device-width, initial-scale=1">
 
-  <title>{{ site.portal_name }}</title>
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  {% capture description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{%else%}{{ content | raw_content }}{% endif %}{% endcapture %}
+  <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">
 
-  <!--Bootstrap-->
-  <link href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/css/base.css">
-
-  <!-- Icons -->
-  <link rel="shortcut icon" type="image/x-icon" href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/favicon.ico">
-	<link rel="icon" type="image/x-icon" href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/favicon.ico">
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+  <link href="{{ site.baseurl }}/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
 
   <!-- JQuery -->
   <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <!-- Utility -->
   <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/utility.js" type="text/javascript" charset="utf-8"></script>
 
   <!-- Github.js - https://github.com/michael/github -->
@@ -30,131 +21,29 @@
   <!-- Cookies.js - https://github.com/ScottHamper/Cookies -->
   <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/cookies.js"></script>
 
-  <!-- D3.js https://github.com/d3/d3 -->
-  <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/d3.v3.min.js"></script>
-
   <!-- js-yaml - https://github.com/nodeca/js-yaml -->
   <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/js-yaml.min.js"></script>
 
   <!-- js-yaml - https://github.com/nodeca/js-yaml -->
   <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/tabletop.js" type="text/javascript"></script>
 
-  <style media="screen">
-    .icon-version {
-      margin: 4rem 0;
-    }
-    i {
-      display: inline-block;
-      margin: 2rem;
-      font-size: 5rem;
-    }
-    a { color: #000; }
+  <style>
 
-    .justified {
-        position:absolute;
-        left:40%;
-        padding-top: 1px;
-        margin-bottom: 1px;
-    }
+  .strip{
+  border: 5px solid #000;
+  width: 100%;
+  height: 400px;
+  }
 
-    .sub-header {
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
-    }
+  .strip td{
+  border: 3px solid #000;
+  width: 33%;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: bottom;
+  text-align: top;
+  }
 
-    /*
-     * Top navigation
-     * Hide default border to remove 1px line.
-     */
-    .navbar-fixed-top {
-      border: 0;
-    }
-
-    /*
-     * Sidebar
-     */
-
-    /* Hide for mobile, show later */
-    .sidebar {
-      display: none;
-    }
-    @media (min-width: 768px) {
-      .sidebar {
-        position: fixed;
-        top: 51px;
-        bottom: 0;
-        left: 0;
-        z-index: 1000;
-        display: block;
-        padding: 20px;
-        overflow-x: hidden;
-        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color: #f5f5f5;
-        border-right: 1px solid #eee;
-      }
-    }
-
-    /* Sidebar navigation */
-    .nav-sidebar {
-      margin-right: -21px; /* 20px padding + 1px border */
-      margin-bottom: 20px;
-      margin-left: -20px;
-    }
-    .nav-sidebar > li > a {
-      padding-right: 20px;
-      padding-left: 20px;
-    }
-    .nav-sidebar > .active > a,
-    .nav-sidebar > .active > a:hover,
-    .nav-sidebar > .active > a:focus {
-      color: #fff;
-      background-color: #428bca;
-    }
-
-
-    /*
-     * Main content
-     */
-
-    .main {
-      padding: 20px;
-    }
-    @media (min-width: 768px) {
-      .main {
-        padding-right: 40px;
-        padding-left: 40px;
-      }
-    }
-    .main .page-header {
-      margin-top: 0;
-    }
-
-
-    /*
-     * Placeholder dashboard ideas
-     */
-
-    .placeholders {
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    .placeholders h4 {
-      margin-bottom: 0;
-    }
-    .placeholder {
-      margin-bottom: 20px;
-    }
-    .placeholder img {
-      display: inline-block;
-      border-radius: 50%;
-    }
-
-    .center {
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-        padding-left: 50px;
-    }
   </style>
 
 </head>

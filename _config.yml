@@ -1,22 +1,30 @@
-# Name - Provide a simple name for your API / developer portal.
-portal_title: 'teh jigz up'
-portal_name: 'teh jigz up'
+# The name and email - replace with yours.
+title: Teh Jigz Up
+email: tehjigzup@laneworks.net
 
-# URL - developer.[yourdomain].com
-portal_url: https://kinlane.github.io/teh-jigz-up/
+# The full URL of the website - replace with yourrs.
+baseurl: https://teh-jigz-up.github.io/teh-jigz-up
+url: /
 
-# Description - Provide a concise description of what a platform does.
-portal_description: A project.
+# Exclude our ruby stuff
+exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml, image_optim_cache.yml]
 
-# Contact Information
-portal_contact_name: Kin Lane
-portal_contact_email: info@apievangelist.com
+# Build settings
+markdown: kramdown
 
+# the blog path template (do not change)
+permalink: /:categories/:title/
+
+# Github details - replace with your user and repo name
 github_user: teh-jigz-up
-github_repo: jig
+github_repo: teh-jigz-up
 
-permalink: /:categories/:year/:month/:day/:title/
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", ".DS_Store"]
+# This is the image in the header - you can replace if you want.
+header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-header.png
 
-paginate: 150
-paginate_path: "/updates/page:num"
+# This is the spreadsheet driving comic -- replace with the link to your spreadsheet.
+#google_sheet: https://docs.google.com/spreadsheets/d/1kog5mt-Rubg_JogvAmWgy0z0QnnsbfIFDlMdi3H2rbw/edit#gid=1315410037
+google_sheet: https://docs.google.com/spreadsheets/d/17PQQpUwl_uQzQeFrj4gZtQ1BphuhfFf5OYW2Neob-hs/edit#gid=0
+
+# The first sheet in your worksheet - change to yours.
+first_sheet: introduction
