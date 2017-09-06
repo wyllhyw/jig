@@ -1,5 +1,5 @@
 # The name and email - replace with yours.
-title: Teh Jigz Up
+title: Teh Jigz Up (Jig)
 email: tehjigzup@laneworks.net
 
 # The full URL of the website - replace with yourrs.
@@ -17,13 +17,12 @@ permalink: /:categories/:title/
 
 # Github details - replace with your user and repo name
 github_user: teh-jigz-up
-github_repo: teh-jigz-up
+github_repo: jig
 
 # This is the image in the header - you can replace if you want.
 header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-header.png
 
 # This is the spreadsheet driving comic -- replace with the link to your spreadsheet.
-#google_sheet: https://docs.google.com/spreadsheets/d/1kog5mt-Rubg_JogvAmWgy0z0QnnsbfIFDlMdi3H2rbw/edit#gid=1315410037
 google_sheet: https://docs.google.com/spreadsheets/d/17PQQpUwl_uQzQeFrj4gZtQ1BphuhfFf5OYW2Neob-hs/edit#gid=0
 
 # The first sheet in your worksheet - change to yours.
