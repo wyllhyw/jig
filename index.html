@@ -102,6 +102,7 @@ title: Teh Jigz Up
               $count = 1;
               $column_count = 1;
               $total_count = $product.length;
+              $row = '<tr>';
               $.each( tabletop.sheets($use_sheet).all(), function(i, service) {
 
                   // Grab the values from the sheet
@@ -116,55 +117,45 @@ title: Teh Jigz Up
                   $background_color = service['Background Color'];
                   $background_image = service['Background Image'];
 
-                  $cell = "<td";
+                  $row = "<td";
 
                   // Set The Title
-                  $cell = $cell + ' title="' + $title + '"';
+                  $row = $row + ' title="' + $title + '"';
 
                   // Set the Background Color
                   if($background_color!='')
                     {
-                    $cell = $cell + ' bgcolor="' + $background_color + '"';
+                    $row = $row + ' bgcolor="' + $background_color + '"';
                     }
 
                   // Set the Background Image
                   if($background_image!='')
                     {
-                    $cell = $cell + ' backgroundImage="url(' + $background_color + ')"';
+                    $row = $row + ' backgroundImage="url(' + $background_color + ')"';
                     }
 
-                  $cell = $cell + '>';
+                  $row = $row + '>';
 
                   // Add Text
                   $add_text = '<div style="' + $text_style + '">' + $text + '</div>';
-                  $cell = $cell + $add_text;
+                  $row = $row + $add_text;
 
                   // Add Image
                   if($image!='')
                     {
                     $add_image = '<img src=' + $image + ' width="' + $image_width + '" style="' + $image_style + '" />';
-                    $cell = $cell + $add_image;
+                    $row = $row + $add_image;
                     }
 
-                  $cell = $cell + '</td>';
-
-                  if($column_count==1)
-                    {
-                    $cell = '<tr>' + $cell;
-                    }
-
-                  if($column_count==3)
-                    {
-                    $cell = $cell + '</tr>';
-                    }
-
-                  console.log($cell);
-                  $('#strip').append($cell);
+                  $row = $row + '</td>';
 
                   $count++;
                   if($column_count==3)
                     {
                     $column_count = 1;
+                    $row = $row + '</tr>';
+                    $('#strip').append($row);
+                    console.log($row);
                     }
                   else
                     {
