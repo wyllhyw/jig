@@ -2,5 +2,181 @@
 layout: default
 title: Teh Jigz Up - All
 ---
-<br />
-<p align="center">Not Quite Ready</p>
+
+---
+layout: default
+title: Teh Jigz Up
+---
+<script type="text/javascript">
+
+    $incoming_sheet = getUrlVar('sheet');
+
+    $use_sheet = "";
+    if($incoming_sheet != '')
+      {
+      $use_sheet = $incoming_sheet;
+      }
+
+    $google_sheet = '{{ site.google_sheet }}';
+
+    var $key_array = $google_sheet.split("/");
+
+    key = $key_array[5];
+
+    $(document).ready( function() {
+      Tabletop.init( { key: key,
+                       callback: showInfo,
+                       debug: true } )
+    })
+
+    function showInfo(data, tabletop) {
+
+      $products = new Array();
+
+      $sheets = tabletop.foundSheetNames;
+
+      $.each($sheets, function(s, $sheetname) {
+      $.each(tabletop.sheets(), function(i, sheet) {
+        if(i == $sheetname)
+          {
+          $title = i;
+          $title = titleCase($title);
+          $title = $title.replace("-", " ");
+          $entry_link = '<li><a href="{{ site.baseurl }}/?sheet=' + i + '">' + $title + '</a></li>';
+          $('#story-entries').append($entry_link);
+          }
+          });
+        });
+
+      $previous = 1;
+      $next = 0;
+
+      $sheets = tabletop.foundSheetNames;
+
+      $.each($sheets, function(s, $sheetname) {
+
+      $.each(tabletop.sheets(), function(i, sheet) {
+
+        // Not sure why I have to do this, but sort was not dependable.
+        if(i == $sheetname)
+          {
+
+          //if(i == $use_sheet || $use_sheet == '')
+            //{
+            $use_sheet = i;
+
+            $title = 'teh jigz up: ' + i;
+            $title = titleCase($title);
+            $title = $title.replace("-", " ");
+            $('#jig-title').html($title);
+
+            // Stop looking for previous
+            $previous = 0;
+
+            // Grab the next sheet as next sheet
+            $next = 1;
+
+            $product = tabletop.sheets($use_sheet).all();
+
+            $count = 1;
+            $column_count = 1;
+            $total_count = $product.length;
+            $row = '<tr>';
+            $.each( tabletop.sheets($use_sheet).all(), function(i, service) {
+
+                // Grab the values from the sheet
+                console.log($title);
+
+                $title = service['Title'];
+                $text = service['Text'];
+                $text_style = service['Text Style'];
+                $image = service['Image'];
+                $image_width = service['Image Width'];
+                $image_style = service['Image Style'];
+                $background_color = service['Background Color'];
+                $background_image = service['Background Image'];
+
+                $row = $row + "<td";
+
+                // Set The Title
+                $row = $row + ' title="' + $title + '"';
+
+                // Set the Background Color
+                if($background_color!='')
+                  {
+                  $row = $row + ' bgcolor="' + $background_color + '"';
+                  }
+
+                // Set the Background Image
+                if($background_image!='')
+                  {
+                  $row = $row + ' backgroundImage="url(' + $background_image + ');"';
+                  }
+
+                $row = $row + '>';
+
+                // Add Text
+                $add_text = '<div style="' + $text_style + '">' + $text + '</div>';
+                $row = $row + $add_text;
+
+                // Add Image
+                if($image!='')
+                  {
+                  $add_image = '<img src=' + $image + ' width="' + $image_width + '" style="' + $image_style + '" />';
+                  $row = $row + $add_image;
+                  }
+
+                $row = $row + '</td>';
+
+                $count++;
+                if($column_count==3)
+                  {
+                  $column_count = 1;
+                  $row = $row + '</tr>';
+                  $('#strip-table').append($row);
+                  console.log($row);
+                  $row = '<tr>';
+                  }
+                else
+                  {
+                  $column_count++;
+                  }
+
+              });
+
+            }
+
+            //}
+
+          });
+
+      });
+
+    }
+
+</script>
+
+<div style="width: 81%;">
+  <div style="border: 1px solid #000; width: 100%; padding: 0px;">
+    <article class="columns small-14 large-offset-1 large-10 comic-page" style="width: 100%; padding: 0px;">
+      <nav class="comic-nav">
+      	<nav class="previous-comic" id="jig-previous-top"></nav>
+      	<nav class="first-comic" id="jig-title" style="color: #FFF;"></nav>
+        <nav class="comic-next" id="jig-next-top"></nav>
+      </nav>
+
+      <div style="width: 100%;">
+        <table id="strip-table" class="strip"></table>
+      </div>
+
+      <nav class="comic-nav">
+        <nav class="previous-comic" id="jig-previous-bottom"></nav>
+        <nav class="first-comic">
+          <a href="#" class="hide-for-small">All<span class="icon-arrow-down"></span></a>
+        </nav>
+        <nav class="comic-next" id="jig-next-bottom"></nav>
+      </nav>
+
+    </article>
+  </div>
+</div>
