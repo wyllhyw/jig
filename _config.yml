@@ -1,29 +1,18 @@
-# The name and email - replace with yours.
-title: Teh Jigz Up (Jig)
-email: tehjigzup@laneworks.net
-
-# The full URL of the website - replace with yourrs.
-baseurl: https://teh-jigz-up.github.io/jig
-url: /
-
-# Exclude our ruby stuff
-exclude: [.bundle, bin, vendor, Gemfile, Gemfile.lock, Rakefile, s3_website.yml, image_optim_cache.yml]
-
-# Build settings
-markdown: kramdown
-
-# the blog path template (do not change)
-permalink: /:categories/:title/
-
-# Github details - replace with your user and repo name
-github_user: teh-jigz-up
-github_repo: jig
-
-# This is the image in the header - you can replace if you want.
-header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-header.png
-
-# This is the spreadsheet driving comic -- replace with the link to your spreadsheet.
+# 1) Grab the URL of YOUR Google Sheet and paste Here
 google_sheet: https://docs.google.com/spreadsheets/d/17PQQpUwl_uQzQeFrj4gZtQ1BphuhfFf5OYW2Neob-hs/edit#gid=0
 
-# The first sheet in your worksheet - change to yours.
-first_sheet: introduction
+# 2) Give your Jig a name
+title: Teh Jigz Up (Jig)
+
+# 3) Change this to you Github user
+github_user: teh-jigz-up
+
+# 3) Change this to your repo (when/if you change the name)
+github_repo: jig
+
+# 4) This is the header logo, if you want to chnge
+header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-header.png
+
+
+# DO NOT CHANGE
+markdown: kramdown

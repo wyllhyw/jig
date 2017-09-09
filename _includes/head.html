@@ -7,7 +7,7 @@
   {% capture description %}{% if page.description %}{{ page.description }}{% elsif site.description %}{{ site.description }}{%else%}{{ content | raw_content }}{% endif %}{% endcapture %}
   <meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">
 
-  <link href="{{ site.baseurl }}/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
 
   <!-- JQuery -->
   <script src="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/js/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
