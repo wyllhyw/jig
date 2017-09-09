@@ -100,6 +100,7 @@ title: Teh Jigz Up
               $product = tabletop.sheets($use_sheet).all();
 
               $count = 1;
+              $column_count = 1;
               $total_count = $product.length;
               $.each( tabletop.sheets($use_sheet).all(), function(i, service) {
 
@@ -114,30 +115,59 @@ title: Teh Jigz Up
                   $background_color = service['Background Color'];
                   $background_image = service['Background Image'];
 
+                  $cell = "<td";
+
                   // Set The Title
-                  $("#strip" + $count).attr("title", $title);
+                  $cell = $cell + ' title="' + $title + '"';
 
                   // Set the Background Color
-                  $("#strip" + $count).attr("bgcolor", $background_color);
+                  if($background_color!='')
+                    {
+                    $cell = $cell + ' bgcolor="' + $background_color + '"';
+                    }
 
                   // Set the Background Image
                   if($background_image!='')
                     {
-                    $("#strip" + $count).css('backgroundImage','url('+$background_image+')');
+                    $cell = $cell + ' backgroundImage="url(' + $background_color + ')"';
                     }
+
+                  $cell = $cell + '>';
 
                   // Add Text
                   $add_text = '<div style="' + $text_style + '">' + $text + '</div>';
-                  $("#strip" + $count).append($add_text);
+                  $cell = $cell + $add_text;
 
                   // Add Image
                   if($image!='')
                     {
                     $add_image = '<img src=' + $image + ' width="' + $image_width + '" style="' + $image_style + '" />';
-                    $("#strip" + $count).append($add_image);
+                    $cell = $cell + $add_image;
                     }
 
+                  $cell = $cell + '</td>';
+
+                  if($column_count==1)
+                    {
+                    $cell = '<tr>' + $cell;
+                    }
+
+                  if($column_count==3)
+                    {
+                    $cell = $cell . '</tr>';
+                    }
+
+                  $('#story-entries').append($cell);
+
                   $count++;
+                  if($column_count==3)
+                    {
+                    $column_count = 1;
+                    }
+                  else
+                    {
+                    $column_count++;
+                    }
 
                 });
 
@@ -163,18 +193,7 @@ title: Teh Jigz Up
       </nav>
 
       <div style="width: 100%;">
-        <table class="strip">
-          <tr>
-            <td id="strip1" title=""></td>
-            <td id="strip2" title=""></td>
-            <td id="strip3" title=""></td>
-          </tr>
-          <tr>
-            <td id="strip4" title=""></td>
-            <td id="strip5" title=""></td>
-            <td id="strip6" title=""></td>
-          </tr>
-        </table>
+        <table class="strip"></table>
       </div>
 
       <nav class="comic-nav">
