@@ -2,12 +2,9 @@
 layout: default
 title: Teh Jigz Up
 ---
-DEBUG!!
 <script type="text/javascript">
 
     $incoming_sheet = getUrlVar('sheet');
-
-    console.log("incoming: " + $incoming_sheet);
 
     $use_sheet = "";
     if($incoming_sheet != '')
@@ -88,7 +85,7 @@ DEBUG!!
             if(i == $use_sheet || $use_sheet == '')
               {
               $use_sheet = i;
-              
+
               $title = 'teh jigz up: ' + i;
               $title = titleCase($title);
               $title = $title.replace("-", " ");
