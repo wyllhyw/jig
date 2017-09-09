@@ -1,0 +1,14 @@
+---
+layout: default
+title: Teh Jigz Up - Backgrounds
+---
+
+<div style="width: 80%;">
+  <div style=" width: 100%; padding: 0px;">
+    <h1>Teh Jigz UP! Backgrounds</h1>
+    <p>These are some background imageswe have assembed for you to use. They are editable in the _data/people.yaml file for this project.</p>
+    {% for background in site.data.backgrounds %}
+      <img src="/images/backgrounds/{{ background }}" width="100" style="display: inline" />
+    {% endfor %}
+    <p>You can manage your own gallery of background images once you fork, by editing, and adding to the _data/people.yaml file in your repo.</p>
+</div>
