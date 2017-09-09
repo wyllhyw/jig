@@ -6,7 +6,8 @@ title: Teh Jigz Up - Backgrounds
 <div style="width: 80%;">
   <div style=" width: 100%; padding: 0px;">
     <h1>Teh Jigz UP! Backgrounds</h1>
-    <p>These are some background imageswe have assembed for you to use. They are editable in the _data/people.yaml file for this project.</p>
+    <p>These are some background images we have assembed for you to use. They are editable in the _data/people.yaml file for this project.</p>
+    --{{ site.data.backgrounds }}--
     {% for background in site.data.backgrounds %}
       <img src="/images/backgrounds/{{ background }}" width="100" style="display: inline" />
       {{ background }}
