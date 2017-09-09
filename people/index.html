@@ -8,7 +8,7 @@ title: Teh Jigz Up - People
     <h1>About Teh Jigz UP! People</h1>
     <p>These are some images of people we have assembed for you to use. They are editable in the _data/people.yaml file for this project.</p>
     {% for people in site.data.people %}
-      <img src="/images/people/{{ people }}" width="100" style="display: inline" />
+      <img src="/images/people/{{ people.name }}" width="100" style="display: inline" />
     {% endfor %}
     <p>These images come from the <a href="https://thenounproject.com/">Noun Project</a> and <a href="https://www.iconfinder.com/search/?q=people&price=free">Icon Finder</a>. You can manage your own gallery of people once you fork, by editing, and adding to the _data/people.yaml file in your repo.</p>
 </div>
