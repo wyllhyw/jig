@@ -2,18 +2,15 @@
 layout: default
 title: Teh Jigz Up
 ---
-
+DEBUG!!
 <script type="text/javascript">
 
     $incoming_sheet = getUrlVar('sheet');
 
     console.log("incoming: " + $incoming_sheet);
 
-    if($incoming_sheet == '')
-      {
-      $use_sheet = '{{ site.first_sheet }}';
-      }
-    else
+    $use_sheet = "";
+    if($incoming_sheet != '')
       {
       $use_sheet = $incoming_sheet;
       }
@@ -88,7 +85,7 @@ title: Teh Jigz Up
               $next = 0;
               }
 
-            if(i == $use_sheet)
+            if(i == $use_sheet || $use_sheet == '')
               {
 
               $title = 'teh jigz up: ' + i;
@@ -109,6 +106,7 @@ title: Teh Jigz Up
               $.each( tabletop.sheets($use_sheet).all(), function(i, service) {
 
                   // Grab the values from the sheet
+                  console.log($title);
                   $title = service['Title'];
                   $text = service['Text'];
                   $text_style = service['Text Style'];
