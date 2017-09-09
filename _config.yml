@@ -14,5 +14,7 @@ github_repo: jig
 header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-header.png
 
 
+first_sheet: introduction
+
 # DO NOT CHANGE
 markdown: kramdown
