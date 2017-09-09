@@ -2,22 +2,20 @@
   <nav class="row">
     <div id="nav">
       <ul class="columns medium-10 left primary-nav">
-        <li{% if page.title == 'Teh Jigz Up' %} class="active"{% endif %}><a href="{{ site.baseurl }}/">Home</a></li>
-        <li{% if page.title == 'About gz Up' %} class="active"{% endif %}><a href="{{ site.baseurl }}/about/">About</a></li>
+        <li{% if page.title == 'Teh Jigz Up' %} class="active"{% endif %}><a href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/">Home</a></li>
+        <li{% if page.title == 'About gz Up' %} class="active"{% endif %}><a href="https://{{ site.github_user }}.github.io/{{ site.github_repo }}/about/">About</a></li>
       	<li class="dropdown">
       	  <a href="#">Entries</a>
-      		<ul id="story-entries">
-      		   <li><a href="#">sub</a></li>
-      		</ul>
+      		<ul id="story-entries"></ul>
       	</li>
         <li class="dropdown">
       	  <a href="#">Spreadsheet</a>
       		<ul>
-      		   <li><a href="{{ site.google_sheet }}">Edit Spreadsheet</a></li>
-             <li><a href="{{ site.google_sheet | replace: 'edit','copy' }}">Copy Spreadsheet</a></li>
+      		   <li><a href="{{ site.google_sheet }}" target="_blank">Edit Spreadsheet</a></li>
+             <li><a href="{{ site.google_sheet | replace: 'edit','copy' }}" target="_blank">Copy Spreadsheet</a></li>
       		</ul>
       	</li>
-        <li{% if page.title == 'Teh Jigz Up Blog' %} class="active"{% endif %}><a href="https://github.com/teh-jigz-up/jig">Github Repo</a></li>
+        <li{% if page.title == 'Teh Jigz Up Blog' %} class="active"{% endif %}><a href="https://github.com/teh-jigz-up/jig" target="_blank">Github Repo</a></li>
       </ul>
 
       <ul class="columns medium-2 right primary-nav">
