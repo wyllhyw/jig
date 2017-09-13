@@ -15,3 +15,5 @@ header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-heade
 
 # DO NOT CHANGE
 markdown: kramdown
+
+theme: jekyll-theme-cayman
