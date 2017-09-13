@@ -1,14 +1,14 @@
 # 1) Grab the URL of YOUR Google Sheet and paste Here (make sure it ends with /edit -- clean off anything #gid= and beyond)
-google_sheet: https://docs.google.com/spreadsheets/d/17PQQpUwl_uQzQeFrj4gZtQ1BphuhfFf5OYW2Neob-hs/edit
+google_sheet: https://docs.google.com/spreadsheets/d/1OiasUVfhjUvI6HkYpfGLvl9Xobkw-lDgaJvDKhgTvHc/edit
 
 # 2) Give your Jig a name
-title: Teh Jigz Up (Jig)
+title: bee syrup
 
 # 3) Change this to you Github user
-github_user: teh-jigz-up
+github_user: wyllhyw
 
 # 3) Change this to your repo (when/if you change the name)
-github_repo: jig
+github_repo: beez
 
 # 4) This is the header logo, if you want to chnge
 header_image: https://teh-jigz-up.github.io/teh-jigz-up/images/teh-jigz-up-header.png
